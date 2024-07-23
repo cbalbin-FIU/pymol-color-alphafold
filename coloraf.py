@@ -27,10 +27,10 @@ def AFcolors(selection="all"):
     The name of the selection/object to color by pLDDT. Default: all
     """
 
-    cmd.color("0x126DFF", f"({selection}) and (b > 90 or b = 90)")
-    cmd.color("0x0ECFF1", f"({selection}) and ((b < 90 and b > 70) or b = 70)")
-    cmd.color("0xF6ED12", f"({selection}) and ((b < 70 and b > 50) or b = 50)")
-    cmd.color("0xEE831D", f"({selection}) and b < 50")
+    cmd.color("0x0053D6", f"({selection}) and (b > 90 or b = 90)")
+    cmd.color("0x64CBF3", f"({selection}) and ((b < 90 and b > 70) or b = 70)")
+    cmd.color("0xFFDB13", f"({selection}) and ((b < 70 and b > 50) or b = 50)")
+    cmd.color("0xFE7D45", f"({selection}) and b < 50")
 
 
 cmd.extend("AFcolors", AFcolors)
