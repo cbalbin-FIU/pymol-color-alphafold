@@ -1,3 +1,6 @@
+from pymol import cmd
+
+
 def coloraf(selection="all"):
     """
     AUTHOR
@@ -14,13 +17,13 @@ def coloraf(selection="all"):
     sele (string)
     The name of the selection/object to color by pLDDT. Default: all
     """
-    objects = set(cmd.get_object_list(selection))
-    # Process each object separately
-    for obj in objects:
+    for obj in set(cmd.get_object_list(selection)):
+
         stored.b = []
         cmd.iterate(obj, "stored.b.append(b)")
         max_bfactor = max(stored.b)
         print(f"Object {obj}: Maximum B-factor = {max_bfactor:.3f}")
+
         if max_bfactor <= 1.0:
             cmd.color("blue", f"({obj}) and b > 0.90")
             cmd.color("cyan", f"({obj}) and b < 0.90 and b > 0.70")
@@ -31,6 +34,7 @@ def coloraf(selection="all"):
             cmd.color("cyan", f"({obj}) and b < 90 and b > 70")
             cmd.color("yellow", f"({obj}) and b < 70 and b > 50")
             cmd.color("orange", f"({obj}) and b < 50")
+
 
 cmd.extend("coloraf", coloraf)
 cmd.auto_arg[0]["coloraf"] = [cmd.object_sc, "object", ""]
