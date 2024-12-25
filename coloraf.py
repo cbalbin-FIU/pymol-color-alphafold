@@ -25,14 +25,14 @@ def coloraf(selection="all"):
         print(f"Object {obj}: Maximum B-factor = {max_bfactor:.3f}")
 
         if max_bfactor <= 1.0:
-            cmd.color("blue", f"({obj}) and b >= 0.90")
-            cmd.color("cyan", f"({obj}) and b < 0.90 and b >= 0.70")
-            cmd.color("yellow", f"({obj}) and b < 0.70 and b >= 0.50")
+            cmd.color("blue", f"({obj}) and (b > 0.90 or b = 0.90)")
+            cmd.color("cyan", f"({obj}) and ((b < 0.90 and b > 0.70) or b = 0.70)")
+            cmd.color("yellow", f"({obj}) and ((b < 0.70 and b > 0.50) or b = 0.50)")
             cmd.color("orange", f"({obj}) and b < 0.50")
         else:
-            cmd.color("blue", f"({obj}) and b >= 90")
-            cmd.color("cyan", f"({obj}) and b < 90 and b >= 70")
-            cmd.color("yellow", f"({obj}) and b < 70 and b >= 50")
+            cmd.color("blue", f"({obj}) and (b > 90 or b = 90)")
+            cmd.color("cyan", f"({obj}) and ((b < 90 and b > 70) or b = 70)")
+            cmd.color("yellow", f"({obj}) and ((b < 70 and b > 50) or b = 50)")
             cmd.color("orange", f"({obj}) and b < 50")
 
 
